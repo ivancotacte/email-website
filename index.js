@@ -8,7 +8,7 @@ app.get("/test/:phonenumber/:message", (req, res) => {
     res.send(`Phone number: ${phonenumber}`);
 
 const accountSid = 'AC398936a5d2682bc46c8d5b28a4ef725d';
-const authToken = 'd0697b178a2fca766e0965a8d659dddf';
+const authToken = 'a459d8ea2fe912991f261b1d9eaaa4fd';
 const client = require('twilio')(accountSid, authToken);
 
 client.messages
