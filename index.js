@@ -3,6 +3,24 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.get("/test/:phonenumber/:message", (req, res) => {
+    const { phonenumber , message} = req.params;
+    res.send(`Phone number: ${phonenumber}`);
+
+const accountSid = 'AC398936a5d2682bc46c8d5b28a4ef725d';
+const authToken = 'd0697b178a2fca766e0965a8d659dddf';
+const client = require('twilio')(accountSid, authToken);
+
+client.messages
+    .create({
+        body: message,
+        from: '+15169792252',
+        to: phonenumber
+    })
+    .then(message => console.log(message.sid))
+    .done();
+    
+});
 app.get("/email/:test", (req, res) => {
   res.send(`Email: ${req.params.test}`);
 
