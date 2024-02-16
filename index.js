@@ -25,17 +25,18 @@ app.get("/email/:test", (req, res) => {
   });
 
   const mailOptions = {
-    from: "cotactearmenion@gmail.com",
+    from: '"GROUP 10 - LFSA322N002 👻" <cotactearmenion@gmail.com>',
     to: req.params.test,
-    subject: "OTP for Authentication",
-    text: `TEST`,
+    subject: "TEST TEST TEST TEST TEST",
+    text: `TEST TEST TEST TEST TEST`,
+    html: "<b>Hello world?</b>"
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error("Error sending OTP via email:", error);
+      console.error("Error sending email:", error);
     } else {
-      console.log("OTP sent via email:", info.response);
+      console.log("Message sent: %s", info.messageId);
     }
   });
 });
